@@ -1,0 +1,33 @@
+div.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+div.info-wrapper {
+  margin-top: 10px;
+}
+
+#board {
+  border-collapse: collapse;
+  border-spacing: 0px;
+  width: 288px;
+  height: 288px;
+}
+
+#board tr td {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #999;
+}
+
+.board-green {
+  background-color: #090;
+}
+
+.board-red {
+  background-color: #f66;
+}
