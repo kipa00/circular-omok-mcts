@@ -6,22 +6,35 @@ import os, sys
 PORT = 9450
 class Handler(http.server.BaseHTTPRequestHandler):
 	def do_GET(self):
-		board = self.path
-		if board.startswith('/'):
-			board = board[1:]
-		stdout.write(board)
-		stdout.flush()
-		pos = []
-		while True:
-			c = stdin.read(1)
-			pos.append(c)
-			if c == '\n':
-				break
-		pos = "".join(pos)
+		path = self.path
+		if path.startswith('/'):
+			path = path[1:]
+		if len(path) == 81 and all(x in '012' for x in path):
+			stdout.write(path)
+			stdout.flush()
+			pos = []
+			while True:
+				c = stdin.read(1)
+				pos.append(c)
+				if c == '\n':
+					break
+			data = "".join(pos).encode('utf-8')
+			response = 200
+		else:
+			if not path:
+				path = 'index.html'
+			response = 404
+			try:
+				with open(path, 'rb') as f:
+					data = f.read()
+				response = 200
+			except:
+				with open('not-found.html', 'rb') as f:
+					data = f.read()
 		self.send_response(200)
 		self.send_header('Access-Control-Allow-Origin', '*')
 		self.end_headers()
-		self.wfile.write(pos.encode('utf-8'))
+		self.wfile.write(data)
 
 def main():
 	global stdin

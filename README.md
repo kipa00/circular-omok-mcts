@@ -7,4 +7,4 @@ make
 python server.py
 ```
 
-와 같이 한 이후 `index.html` 클라이언트를 통해 접속하면 됩니다.
+와 같이 한 이후 `localhost:9450`을 통해 접속하면 됩니다.
