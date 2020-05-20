@@ -1,3 +1,7 @@
+body {
+  overflow: hidden;
+}
+
 div.wrapper {
   width: 100%;
   height: 100%;
@@ -11,16 +15,26 @@ div.info-wrapper {
   margin-top: 10px;
 }
 
-#board {
-  border-collapse: collapse;
-  border-spacing: 0px;
-  width: 288px;
-  height: 288px;
+div.board-wrapper {
+  position: relative;
+  width: 315px;
+  height: 315px;
 }
 
-#board tr td {
-  width: 32px;
-  height: 32px;
+#board {
+  position: absolute;
+}
+
+#board-table {
+  border-collapse: collapse;
+  border-spacing: 0px;
+  width: 315px;
+  height: 315px;
+}
+
+#board-table tr td {
+  width: 35px;
+  height: 35px;
   border: 1px solid #999;
 }
 
